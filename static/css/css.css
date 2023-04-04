@@ -1,0 +1,10 @@
+img {
+    width: 100px; /* You can set the dimensions to whatever you want */
+    height: 400px;
+    object-fit: cover;
+}
+
+.messages {
+    height: 400px;
+    overflow-y: auto;
+}

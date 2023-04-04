@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    NbaShop
+{% endblock %}
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <form method="get">
+                    {{ myFilter.form }}
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    <br>
+    <div class="row row-cols-1 row-cols-md-3">
+        {% for good in goods %}
+        <div class="col mb-4 ">
+            <div class="card bg-dark text-white" style="width:400px">
+                <img src="{{ good.good_pic.url }}" class=" img card-img-top" style="width:100%">
+                <div class="card-body">
+                    <h5 class="card-title">{{ good.name }}</h5>
+                    <p class="card-text">{{ good.description }}</p>
+                    <a href="{{ good.get_absolute_url }}" class="btn btn-primary">Details</a>
+                    <a data-product="{{ good.pk }}" data-action="add" class="btn btn-primary update-cart">Add to cart</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <script type="text/javascript">
+    var user = '{{ request.user }}'
+    </script>
+
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+{% endblock %}

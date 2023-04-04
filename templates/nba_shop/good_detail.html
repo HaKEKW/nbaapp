@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ obj.name }} - {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card card-body">
+                <a class="btn btn-warning" href="{% url 'shop_url' %}">
+                    &#8592; Back to Shop List
+                </a>
+                <hr>
+                <h3 style="text-align: center">{{ good.name }}</h3>
+                <hr>
+                <img class="profile-pic" src="{{ good.good_pic.url }}">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4 class="pro-d-title">
+                <a href="#" class="">
+                    {{ good.name }}
+                </a>
+            </h4>
+            <div class="product_meta">
+                <span class="posted_in"> <strong>Categories:</strong> <a rel="tag"
+                                                                         href="#">{{ good.category }}</a></span>
+            </div>
+            <div class="m-bot15"><strong>Price : </strong><span class="pro-price"> {{ good.price }} $</span></div>
+            <div class="form-group">
+                <label>Quantity</label>
+                <input type="quantiy" placeholder="1" class="form-control quantity">
+            </div>
+            <p>
+                <button class="btn btn-round btn-danger" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart
+                </button>
+            </p>
+        </div>
+    </div>
+
+    </div>
+{% endblock %}

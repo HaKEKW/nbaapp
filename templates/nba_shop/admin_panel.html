@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'nba_shop/status.html' %}
+    <br>
+
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-5">
+            <h5>CUSTOMERS</h5>
+            <hr>
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Profile</th>
+                        <th>Customers</th>
+                        <th>Phone</th>
+                    </tr>
+                    {% for customer in customers %}
+                        <tr>
+                            <th><a class="btn btn-sm btn-info" href="{{ customer.get_absolute_url }}">View Information</a></th>
+                            <th>{{ customer.name }}</th>
+                            <th>{{ customer.phone }}</th>
+                            <th></th>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <h5>LAST ORDERS</h5>
+            <hr>
+            <div class="card card-body">
+{#                <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_order_url' %}">Create Order#}
+{#                </a>#}
+                <table class="table table-sm">
+                    <tr>
+                        <th>Product</th>
+                        <th>Date Ordered</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                        <th>Remove</th>
+                    </tr>
+                    {% for order in orders %}
+                        <tr>
+                            <th>{{ order.product }}</th>
+                            <th>{{ order.date_created }}</th>
+                            <th>{{ order.status }}</th>
+                            <th><a class="btn btn-sm btn-info" href="{{ order.get_update_url }}">
+                                Update</a></th>
+                            <th><a class="btn btn-sm btn-danger" href="{{ order.get_delete_url }}">
+                                Delete</a></th>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

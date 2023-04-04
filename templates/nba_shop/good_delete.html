@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Delete Good - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <form action="{{ good.get_delete_url }}" method="post">
+        {% csrf_token %}
+        <h3>Are you sure you want to delete "{{ good.name }}" product?</h3>
+        <a href="{{ good.get_absolute_url }}">Cancel</a>
+        <button type="submit" name="button" class="btn btn-danger">Delete</button>
+    </form>
+{% endblock %}

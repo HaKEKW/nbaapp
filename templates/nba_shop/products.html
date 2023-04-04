@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <br>
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h3>Goods</h3>
+                <a class="btn btn-sm btn-info" href="{% url 'good_create_url' %}">Add new good</a>
+            </div>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Goods</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                    </tr>
+                    {% for good in goods %}
+                        <tr>
+                            <th>{{ good.name }}</th>
+                            <th>{{ good.category }}</th>
+                            <th>{{ good.price }}</th>
+                            <th><a class="btn btn-sm btn-info" href="{{ good.get_update_url }}">
+                                Update</a></th>
+                            <th><a class="btn btn-sm btn-danger" href="{{ good.get_delete_url }}">
+                                Delete</a></th>
+                        </tr>
+
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

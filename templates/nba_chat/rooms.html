@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    NBAApp Chat Rooms
+{% endblock %}
+
+
+{% block content %}
+    <div class="hero">
+    <div class="hero-body">
+        <h1 class="title has-text-centered has-text-dark">Rooms</h1>
+    </div>
+</div>
+
+<section class="section has-text-dark">
+    <div class="columns is-multiline">
+        {% for room in rooms %}
+        <div class="column is-4 has-text-centered">
+            <div class="box">
+                <h2 class="subtitle">{{ room.name }}</h2>
+
+                <a href="{{ room.get_absolute_url }}">Join</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
